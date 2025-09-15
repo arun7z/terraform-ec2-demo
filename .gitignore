@@ -1,6 +1,18 @@
+# create/edit .gitignore to exclude sensitive files
+cat >> .gitignore <<'EOF'
 terraform-demo-key.pem
 *.tfstate
 *.tfstate.backup
 .tfplan
 .terraform/
+EOF
 
+# remove the private key from git index if it was added previously
+git rm --cached terraform-demo-key.pem 2>/dev/null || true
+
+# add .gitignore and any other changes
+git add .gitignore
+git add -A
+git commit -m "Remove private key from index and add .gitignore" || true
+
+terraform-demo-key.pem
