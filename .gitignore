@@ -1,9 +1,6 @@
-cat > .gitignore <<'EOF'
-.terraform/
+terraform-demo-key.pem
 *.tfstate
-*.tfstate.*
-crash.log
-override.tf
-override.tf.json
-EOF
+*.tfstate.backup
+.tfplan
+.terraform/
 
